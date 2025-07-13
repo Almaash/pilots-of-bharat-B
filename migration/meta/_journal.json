@@ -1,0 +1,27 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1751996683539,
+      "tag": "0000_uneven_major_mapleleaf",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1751997421181,
+      "tag": "0001_lazy_jetstream",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1752396362537,
+      "tag": "0002_cool_wolfpack",
+      "breakpoints": true
+    }
+  ]
+}
