@@ -5,6 +5,7 @@ import {
   getSkillById,
   updateSkill,
   deleteSkill,
+  getAllSkillsWithFilters,
 } from '../controllers/skillController.js';
 import { upload } from '../middleware/upload.js';
 
@@ -15,5 +16,7 @@ router.get('/user/:userId', getUserSkills);
 router.get('/get/:id', getSkillById);
 router.put('/update/:id', upload.single("image"), updateSkill);
 router.delete('/delete/:id', deleteSkill);
+
+router.get('/getAll', getAllSkillsWithFilters); 
 
 export default router;

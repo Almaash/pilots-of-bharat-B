@@ -22,6 +22,20 @@
       "when": 1752396362537,
       "tag": "0002_cool_wolfpack",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1752595481243,
+      "tag": "0003_mixed_lockjaw",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1752603490075,
+      "tag": "0004_careless_star_brand",
+      "breakpoints": true
     }
   ]
 }
