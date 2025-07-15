@@ -1,6 +1,6 @@
-import { eq } from "drizzle-orm";
+import { and, eq, ilike } from "drizzle-orm";
 import { db } from "../config/db.js";
-import { skills } from "../drizzle/schema.js";
+import { skills, users } from "../drizzle/schema.js";
 import { cloudinary } from "../utils/cloudinary.js";
 import streamifier from "streamifier";
 
@@ -177,5 +177,46 @@ export const deleteSkill = async (req, res) => {
   } catch (error) {
     console.error("Delete Skill Error:", error);
     res.status(500).json({ message: "Error deleting skill" });
+  }
+};
+
+
+export const getAllSkillsWithFilters = async (req, res) => {
+  try {
+    const { name = "", location = "" } = req.query;
+
+    let filters = [];
+
+    if (name.trim()) {
+      filters.push(ilike(skills.name, `%${name.trim()}%`));
+    }
+
+    if (location.trim()) {
+      filters.push(ilike(users.location, `%${location.trim()}%`));
+    }
+
+    const result = await db
+      .select({
+        id: skills.id,
+        name: skills.name,
+        description: skills.description,
+        imageUrl: skills.imageUrl,
+        projectUrl: skills.projectUrl,
+        userId: users.id,
+        userName: users.name,
+        userLocation: users.location,
+        userEmail: users.email, // ✅ Include email
+      })
+      .from(skills)
+      .innerJoin(users, eq(skills.userId, users.id))
+      .where(filters.length > 0 ? and(...filters) : undefined);
+
+    res.status(200).json({
+      message: "Filtered skills fetched",
+      data: result,
+    });
+  } catch (error) {
+    console.error("Error fetching filtered skills:", error);
+    res.status(500).json({ message: "Error fetching skills" });
   }
 };
