@@ -69,7 +69,7 @@ export const createUser = async (req, res) => {
         createdAt: new Date(),
         updatedAt: new Date(),
       })
-      .returning();
+      .returning(); 
 
     res.status(201).json(inserted[0]);
   } catch (err) {
