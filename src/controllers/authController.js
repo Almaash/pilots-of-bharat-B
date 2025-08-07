@@ -45,7 +45,7 @@ import { db } from "../config/db.js"; // your drizzle DB
 import { users } from "../drizzle/schema.js"; // your users table
 import { eq } from "drizzle-orm";
 
-export const googleAuthRegister = async (req, res) => {
+export const createOrFindUser = async (req, res) => {
   try {
     const { name, email, image } = req.body;
 
