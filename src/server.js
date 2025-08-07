@@ -17,7 +17,7 @@ app.use(express.urlencoded({ extended: true }));
 // }));
 
 app.use(cors({
-  origin: 'https://www.bharatpilots.com/', // your frontend origin
+  origin: 'https://www.bharatpilots.com', // your frontend origin
   credentials: true
 }));
 
