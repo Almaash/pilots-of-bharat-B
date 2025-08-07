@@ -11,8 +11,13 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 
 // ✅ Allow frontend to talk to backend
+// app.use(cors({
+//   origin: 'http://localhost:3000', // your frontend origin
+//   credentials: true
+// }));
+
 app.use(cors({
-  origin: 'https://pilots-of-bharat.vercel.app', // your frontend origin
+  origin: 'https://www.bharatpilots.com/', // your frontend origin
   credentials: true
 }));
 
